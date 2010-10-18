@@ -68,8 +68,6 @@ install(["todo"]
             var todo = [ 
                 "see TODOs in code"
               , "commands.js is gigantic - organize?"
-              , "add readme, backup on github"
-              , "urban dict search?"
             ];
             set_output(" &nbsp; == todo ==");
             if (todo.length == 0) add_line("- nothing to do!");
@@ -133,7 +131,7 @@ install(["wikipedia", "wiki", "w"]
             }
         }
         , "performs a search of wikipedia"
-        , "[ _ | query | random ]"
+        , "[ _ | rand | random | query ]"
         );
 install(["ask"]
         , function askmefi(p) { 
@@ -227,7 +225,7 @@ install(["urbandict", "ud"]
             );
         }
         , "searches urban dictionary"
-        , "[ _ | query ]"
+        , "[ _ | slang word ]"
         );
 install(["nhl", "hockey"]
         , function(params) {
@@ -259,7 +257,7 @@ install(["ncaafb", "college"]
             // TODO: search
         }
         , "find college football information"
-        , "[ _ | scores | schedule | standings | bcs ]"
+        , "[ _ | scores | schedule | standings | rankings | bcs ]"
         );
 install(["nfl", "football"]
         , function(params) {
@@ -338,16 +336,18 @@ install(["github", "git"]
             }
         }
         , "access or search github"
-        , "[ _ | random | repos | language | query ]"
+        , "[ _ | random | repos | LANGUAGE | query ]"
         );
 install(["pirate", "tpb"]
         , function(params) {
             if (params[0] == "") go("http://thepiratebay.org");
             else {
+                // CATEGORY in the query can be any key in this dict
                 var categories = {
                     audio: 100,  video: 200, apps: 300,  games: 400, other: 600,
                     movies: 201, movie: 201, music: 101, tv: 205,    all: 0
                 };
+                // 'all' is the default
                 var category = categories["all"];
                 if (params[0] in categories) category = categories[params.shift()];
                 var sort = 7;       // 7 = sort by seeders, decreasing
@@ -360,38 +360,56 @@ install(["pirate", "tpb"]
         );
 
 //
-// Programs
+// Programs - originally intended to load content into output box
 //
 install(["translate"]
         // Looks for syntax: "x into english" || "x from spanish" || etc
         , function(params) {
             // Defaults, Prep, Etc.
-            var sl = ""; var tl = "en"; var q  = "";
-            console.debug("loading google");
-            //google.load("language", "1");
+            var sl = "auto", tl = "en", q  = "";
             
-            // Check for syntax
-            if (params.get(-2) in ["into", "from"]) {
-                console.debug("language syntax found, not yet handled"); // TODO
-            } else {
-                console.debug("no syntax found");
-                q = fuse(params);
+            var languages = {
+              afrikaans:  "af",    albanian:    "sq", arabic:     "ar", 
+              armenian:   "hy",    azerbaijani: "az", basque:     "eu", 
+              belarusian: "be",    bulgarian:   "bg", catalan:    "ca", 
+              chinese:    "zh-CN", croatian:    "hr", czech:      "cs",
+              danish:     "da",    dutch:       "nl", english:    "en", 
+              estonian:   "et",    filipino:    "tl", finnish:    "fi", 
+              french:     "fr",    galician:    "gl", georgian:   "ka", 
+              german:     "de",    greek:       "el", haitian:    "ht",
+              hebrew:     "iw",    hindi:       "hi", hungarian:  "hu", 
+              icelandic:  "is",    indonesian:  "id", irish:      "ga", 
+              italian:    "it",    japanese:    "ja", korean:     "ko", 
+              latin:      "la",    latvian:     "lv", lithuanian: "lt",
+              macedonian: "mk",    malay:       "ms", maltese:    "mt", 
+              norwegian:  "no",    persian:     "fa", polish:     "pl",
+              portuguese: "pt",    romanian:    "ro", russian:    "ru",
+              serbian:    "sr",    slovak:      "sk", slovenian:  "sl",
+              spanish:    "es",    swahili:     "sw", swedish:    "sv",
+              thai:       "th",    turkish:     "tr", ukrainian:  "uk",
+              urdu:       "ur",    vietnamese:  "vi", welsh:      "cy",
+              yiddish:    "yi"
+            };
+
+            // Handles syntax (must be at the end of the query)
+            function handle_direction() {
+                if (params.get(-2).imatchAny("to", "into", "from")) {
+                    lang = params.pop().toLowerCase();
+                    direction = params.pop().toLowerCase();
+                    if (direction == "from")         sl = languages[lang];
+                    if (direction.matchAny("to", "into")) tl = languages[lang];
+                }
             }
 
-            console.debug("calling translate");
-            google.language.translate(q, sl, tl, function(ret) {
-                if (!ret.error) {
-                    set_output(ret.translation);
-                    add_output("foo");
-                } else {
-                    // TODO: better text
-                    set_output("translation failed");
-                }
-            });
-            console.debug("done");
+            handle_direction();
+            handle_direction();
+            q = efuse(params);
+
+            go("http://translate.google.com/#" + sl + "|" + tl + "|" + q);
+
             return false;
         }
-        , "(TODO) provides language translation services"
+        , "provides language translation services"
         , "[ query ] [ _ | INTO language ] [ _ | FROM language ]"
         );
 
