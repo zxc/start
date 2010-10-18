@@ -1,0 +1,38 @@
+
++-------+
+| start |
++-------+
+
+=== what
+
+= custom homepage containing a search bar
+
+= add commands in javascript to handle your input
+
+=== examples
+
+= 'tv archer'    -> Goes to Wikipedia's list of Archer episodes
+
+= 'git'          -> Go to your Github homepage
+
+= 'map new york' -> Find New York on Google Maps
+
+= 'gs rise against' -> Start listening to Rise Against on Grooveshark
+
+= 'nfl scores'      -> Go directly to ESPN's NFL scoreboard
+
+=== details
+
+= type 'help' for a list of commands already installed
+
+= to add your own, use the 'install' function, which takes 4 arguments
+    
+    - an array of names the command goes by, i.e. ["facebook", "f"]
+    
+    - a function to deal with the input, which is your query, split
+      by " ". For 'map new york', you would get ["new", "york"]
+    
+    - a string explaining what the function does
+    
+    - a string explaining arguments for the function; see existing
+      commands for examples
