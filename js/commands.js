@@ -219,6 +219,16 @@ install(["imdb"]
         , "searches imdb"
         , "[ _ | movie title ]"
         );
+install(["urbandict", "ud"]
+        , function(params) {
+            ifblank(params
+              , "http://urbandictionary.com"
+              , "http://urbandictionary.com/define.php?term=" + efuse(params)
+            );
+        }
+        , "searches urban dictionary"
+        , "[ _ | query ]"
+        );
 install(["nhl", "hockey"]
         , function(params) {
             if (params[0] == null) params[0] = ""
