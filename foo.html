@@ -1,0 +1,48 @@
+<!--  
+         == Ideas
+          - tab completion
+          - macro/text expansions
+          - somehow allow opera's address bar access
+            - local server?
+          - widgets?
+            - weather, scores, rss, etc
+-->
+
+<html>
+    <body>
+        <head>
+            <script type="text/javascript" src="./js/addons.js"></script>
+            <script type="text/javascript" src="./js/models.js"></script>
+            <script type="text/javascript" src="./js/utility.js"></script>
+            <script type="text/javascript" src="./js/process.js"></script>
+            <script type="text/javascript" src="./js/commands.js"></script>
+            <script type="text/javascript">
+                function startup() { 
+                    window.outbox    = document.getElementById('output');
+                    window.searchbox = document.getElementById('searchbox');
+                    window.searchbox.focus();
+                }
+                window.onload = startup;
+
+                function show_border() {
+                    window.searchbox.style.borderWidth = '1px';
+                    window.onmousemove = null;
+                }
+                window.onmousemove = show_border;
+            </script>
+            
+            <link rel="stylesheet" type="text/css" href="./css/styles.css" />
+        </head>
+
+        <div id="searchdiv">
+            <form onSubmit="process(); return false;">
+                <input type="text" name="searchbox" id="searchbox" />
+            </form>
+        </div>
+
+        <div id="output">
+
+        </div>
+
+    </body>
+</html>
