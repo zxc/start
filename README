@@ -30,7 +30,8 @@
 
 = to add your own, use the 'install' function, which takes 4 arguments
     
-    - an array of names the command goes by, i.e. ["facebook", "f"]
+    - an array of names the command goes by, i.e. ["facebook", "f"];
+      the first in the list is how the command is listed in 'help'.
     
     - a function to deal with the input, which is your query, split
       by " "; for 'map new york', you would get ["new", "york"].
