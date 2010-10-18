@@ -6,7 +6,7 @@ settings = {
 
     // command settings
   , delicious_u: ""
-  , github_u:    ""
+  , github_u:    "zxc"
   , smugmug_u:   ""
 };
 
