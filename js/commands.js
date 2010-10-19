@@ -229,14 +229,13 @@ install(["urbandict", "ud"]
         );
 install(["nhl", "hockey"]
         , function(params) {
-            if (params[0] == null) params[0] = ""
-            actions = { "": ""
-                      , "scores":    "scoreboard"
+            actions = { "scores":    "scoreboard"
                       , "score":     "scoreboard"
                       , "sechdule":  "schedule"
                       , "standings": "standings"
             };
-            go("http://espn.go.com/nhl/" + actions[params[0]]);
+            var q = actions[params[0]] || "";
+            go("http://espn.go.com/college-football/" + q);
             // TODO: search
         }
         , "find nhl information"
@@ -244,16 +243,15 @@ install(["nhl", "hockey"]
         );
 install(["ncaafb", "college"]
         , function(params) {
-            if (params[0] == null) params[0] = ""
-            actions = { "": ""
-                      , "scores":    "scoreboard"
+            actions = { "scores":    "scoreboard"
                       , "score":     "scoreboard"
-                      , "sechdule":  "schedule"
+                      , "schedule":  "schedule"
                       , "standings": "standings"
                       , "rankings":  "rankings"
                       , "bcs": "bcs"
             };
-            go("http://espn.go.com/college-football/" + actions[params[0]]);
+            var q = actions[params[0]] || "";
+            go("http://espn.go.com/college-football/" + q);
             // TODO: search
         }
         , "find college football information"
@@ -261,14 +259,13 @@ install(["ncaafb", "college"]
         );
 install(["nfl", "football"]
         , function(params) {
-            if (params[0] == null) params[0] = ""
-            actions = { "": ""
-                      , "scores":    "scoreboard"
+            actions = { "scores":    "scoreboard"
                       , "score":     "scoreboard"
                       , "sechdule":  "schedule"
                       , "standings": "standings"
             };
-            go("http://espn.go.com/nfl/" + actions[params[0]]);
+            var q = actions[params[0]] || "";
+            go("http://espn.go.com/college-football/" + q);
             // TODO: search
         }
         , "find nfl information"
@@ -276,14 +273,13 @@ install(["nfl", "football"]
         );
 install(["nba", "basketball"]
         , function(params) {
-            if (params[0] == null) params[0] = ""
-            actions = { "": ""
-                      , "scores":    "scoreboard"
+            actions = { "scores":    "scoreboard"
                       , "score":     "scoreboard"
                       , "sechdule":  "schedule"
                       , "standings": "standings"
             };
-            go("http://espn.go.com/nba/" + actions[params[0]]);
+            var q = actions[params[0]] || "";
+            go("http://espn.go.com/college-football/" + q);
             // TODO: search
         }
         , "find nba information"
@@ -406,8 +402,6 @@ install(["translate"]
             q = efuse(params);
 
             go("http://translate.google.com/#" + sl + "|" + tl + "|" + q);
-
-            return false;
         }
         , "provides language translation services"
         , "[ query ] [ _ | INTO language ] [ _ | FROM language ]"
