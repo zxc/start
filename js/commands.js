@@ -231,11 +231,11 @@ install(["nhl", "hockey"]
         , function(params) {
             actions = { "scores":    "scoreboard"
                       , "score":     "scoreboard"
-                      , "sechdule":  "schedule"
+                      , "schedule":  "schedule"
                       , "standings": "standings"
             };
             var q = actions[params[0]] || "";
-            go("http://espn.go.com/college-football/" + q);
+            go("http://espn.go.com/nhl/" + q);
             // TODO: search
         }
         , "find nhl information"
@@ -261,11 +261,11 @@ install(["nfl", "football"]
         , function(params) {
             actions = { "scores":    "scoreboard"
                       , "score":     "scoreboard"
-                      , "sechdule":  "schedule"
+                      , "schedule":  "schedule"
                       , "standings": "standings"
             };
             var q = actions[params[0]] || "";
-            go("http://espn.go.com/college-football/" + q);
+            go("http://espn.go.com/nfl/" + q);
             // TODO: search
         }
         , "find nfl information"
@@ -275,11 +275,11 @@ install(["nba", "basketball"]
         , function(params) {
             actions = { "scores":    "scoreboard"
                       , "score":     "scoreboard"
-                      , "sechdule":  "schedule"
+                      , "schedule":  "schedule"
                       , "standings": "standings"
             };
             var q = actions[params[0]] || "";
-            go("http://espn.go.com/college-football/" + q);
+            go("http://espn.go.com/nba/" + q);
             // TODO: search
         }
         , "find nba information"
