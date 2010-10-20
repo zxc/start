@@ -115,6 +115,13 @@ install(["map"]
         , "performs a search of google maps"
         , "[ query ]"
         );
+// Example cbssports url for a game on 10/19:
+// http://www.cbssports.com/nhl/gametracker/live/NHL_20101019_BOS@WAS
+// /[LEAGUE]_[YEAR][MONTH][DAY]_[AWAYTEAM]@[ROADTEAM]
+//
+// Example espn url for a game on 10/19:
+// http://sports.espn.go.com/nhl/boxscore?gameId=301019023
+// =..[MONTH][DAY]...
 install(["score"]
         , function(params) {}
         , "(TODO) looks up scores and sports news"
