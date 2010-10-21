@@ -239,6 +239,7 @@ install(["nhl", "hockey"]
             actions = { "scores":    "scoreboard"
                       , "score":     "scoreboard"
                       , "schedule":  "schedule"
+                      , "sched":     "schedule"
                       , "standings": "standings"
             };
             var q = actions[params[0]] || "";
@@ -248,11 +249,12 @@ install(["nhl", "hockey"]
         , "find nhl information"
         , "[ _ | scores | schedule | standings ]"
         );
-install(["ncaafb", "college"]
+install(["ncaafb", "college", "ncaaf"]
         , function(params) {
             actions = { "scores":    "scoreboard"
                       , "score":     "scoreboard"
                       , "schedule":  "schedule"
+                      , "sched":     "schedule"
                       , "standings": "standings"
                       , "rankings":  "rankings"
                       , "bcs": "bcs"
@@ -269,6 +271,7 @@ install(["nfl", "football"]
             actions = { "scores":    "scoreboard"
                       , "score":     "scoreboard"
                       , "schedule":  "schedule"
+                      , "sched":     "schedule"
                       , "standings": "standings"
             };
             var q = actions[params[0]] || "";
@@ -283,6 +286,7 @@ install(["nba", "basketball"]
             actions = { "scores":    "scoreboard"
                       , "score":     "scoreboard"
                       , "schedule":  "schedule"
+                      , "sched":     "schedule"
                       , "standings": "standings"
             };
             var q = actions[params[0]] || "";
