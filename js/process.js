@@ -3,6 +3,7 @@ commands = new CommandList();
 settings = {
     // internal settings
     sort_commands: true
+  , show_border: false
 
     // command settings
   , delicious_u: ""
