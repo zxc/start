@@ -15,6 +15,8 @@ html, body {
     top: 20%;
 
     font-family: monospace;
+    color: #33FF00;
+    font-size: 32;
 }
 
 #searchbox {
@@ -25,6 +27,7 @@ html, body {
     border: 0px solid #33FF00;
     color: #33FF00;
     font-size: 34;
+    margin-left: -15px;
     padding-left: 5px;
     padding-right: 5px;
     padding-top: 5px;
