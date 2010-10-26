@@ -2,12 +2,12 @@ commands = new CommandList();
 
 settings = {
     // internal settings
-    sort_commands: true
-  , show_border: false
+    sort_commands: true     // keep commands sorted for listing in 'help'
+  , show_border:   false    // show searchbox border on mouse move
 
     // command settings
   , delicious_u: ""
-  , github_u:    "zxc"
+  , github_u:    ""
   , smugmug_u:   ""
 };
 
