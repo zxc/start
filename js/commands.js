@@ -81,9 +81,8 @@ install(["url", "u"]
             var query = params[0];
             if (query == null) {
                 window.location.reload();
-            } else if (query.match(/^http:\/\//) == null) {
-                go("http://" + query);
             } else {
+                if (query.match(/^http:\/\//) == null) query = "http://" + query;
                 go(query);
             }
         }
@@ -152,6 +151,16 @@ install(["ask"]
         , "[ _ | query ]"
         );
 install(["tv"]
+        , function(p) {
+            ifblank(p
+              , "http://en.wikipedia.org/wiki/List_of_television_programs_by_name"
+              , instant(efuse(p) + " tv show site:en.wikipedia.org")
+            );
+        }
+        , "search for a show on wikipedia"
+        , "[ _ | show ]"
+        );
+install(["episodes", "eps"]
         , function(p) {
             ifblank(
                 p
